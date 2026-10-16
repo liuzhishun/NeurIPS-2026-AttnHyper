@@ -1,0 +1,8 @@
+--extra-index-url https://download.pytorch.org/whl/cu118
+accelerate==1.11.0
+numpy==2.3.3
+scikit-learn==1.7.2
+torch==2.4.1+cu118
+torch-geometric==2.7.0
+tqdm==4.67.1
+transformers==4.51.0
