@@ -1,7 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(D:/software/Anaconda3/python.exe -c ':*)"
-    ]
-  }
-}
