@@ -122,7 +122,7 @@ Per-seed metrics produced by `--mode train` are appended to `logger/llama2_<task
 └── images/
     ├── framework.png                    # framework overview (rendered, shown in README)
     └── framework.pdf                    # framework overview (vector source)
-
+```
 ## Citation
 
 If you find this work useful in your research, please consider citing:
@@ -137,4 +137,4 @@ year={2026},
 url={https://openreview.net/forum?id=DKOfhIFbgb}
 }
 ```
-```
+
