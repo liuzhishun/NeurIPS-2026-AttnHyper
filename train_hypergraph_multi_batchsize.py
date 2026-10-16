@@ -47,7 +47,7 @@ def make_mlp(in_dim, hidden_dims, out_dim, activation=nn.ReLU, dropout=0):
     return nn.Sequential(*layers)
 
 
-class HyperCharm(MessagePassing):
+class AttnHyperLayer(MessagePassing):
     def __init__(self, node_dim, hedge_dim, hidden_dim, residual=True):
         super().__init__(aggr="add")
         self.residual = residual
@@ -81,13 +81,13 @@ class HyperCharm(MessagePassing):
         return x + out if self.residual else out
 
 
-class HyperCHARM(nn.Module):
+class AttnHyper(nn.Module):
     def __init__(self, node_dim, hedge_dim, hp):
         super().__init__()
         self.in_proj = nn.Linear(node_dim, hp["hidden_dim"])
         self.hp = hp
         self.layers = nn.ModuleList([
-            HyperCharm(
+            AttnHyperLayer(
                 node_dim=hp["hidden_dim"],
                 hedge_dim=hedge_dim,
                 hidden_dim=hp["hidden_dim"],
@@ -200,7 +200,7 @@ def train_model(train_loader, val_loader, test_loader, node_dim, hedge_dim, hp):
     pos_weight_tensor = torch.tensor(pos_weight_val, device=DEVICE)
     loss_fn = nn.BCEWithLogitsLoss(pos_weight=pos_weight_tensor)
 
-    model = HyperCHARM(node_dim, hedge_dim, hp).to(DEVICE)
+    model = AttnHyper(node_dim, hedge_dim, hp).to(DEVICE)
 
     lr = float(hp.get("lr", 3e-4))
     opt = AdamW(model.parameters(), lr=lr, weight_decay=hp.get("weight_decay", 0.0))
@@ -368,7 +368,7 @@ def load_datasets(TRAIN_DIR, TEST_DIR, val_ratio=0.2, bs=2):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Train HyperCHARM for token-level hallucination detection")
+    parser = argparse.ArgumentParser(description="Train AttnHyper for token-level hallucination detection")
     parser.add_argument("--mode", type=str, default="ablation", choices=["train", "ablation", "save"],
                         help="train: multi-seed training with logging; ablation: grid search; save: save best model")
     parser.add_argument("--model_type", type=str, default="Mistral-7B-Instruct-v0.3",

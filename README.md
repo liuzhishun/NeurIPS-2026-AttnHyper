@@ -2,7 +2,7 @@
 
 Official implementation of [Hypergraph Modeling of Transformer Attention for Hallucination Detection](https://neurips.cc/virtual/2026/loc/sydney/poster/154475) (NeurIPS 2026).
 
-The framework represents token-level transformer attention as a hypergraph: each token is a node, and for every response token, the tokens it attends to (above a threshold `tau`) form a hyperedge across all attention heads. A message-passing model (referred to as **AttnHyper** in the paper) then predicts a per-token hallucination probability.
+The framework represents token-level transformer attention as a hypergraph: each token is a node, and for every response token, the tokens it attends to (above a threshold `tau`) form a hyperedge across all attention heads. A message-passing model (**AttnHyper**) then predicts a per-token hallucination probability.
 
 ![Framework overview](images/framework.png)
 
@@ -63,7 +63,7 @@ Output: `hypergraphs/RAGtruth/<model>/<split>_<task_type>_<tau>_<suffix>/` (defa
 
 ### 3. Training and evaluation (`train_hypergraph_multi_batchsize.py`)
 
-HyperCHARM projects node features, applies stacked node→edge→node message-passing layers with degree normalization and residuals, and scores every token with an MLP head. Training uses `BCEWithLogitsLoss` with a response-only `pos_weight` (clipped at 8), AdamW with a cosine schedule (2% warmup), gradient clipping, and early stopping (patience 3) on validation AUPR.
+AttnHyper projects node features, applies stacked node→edge→node message-passing layers with degree normalization and residuals, and scores every token with an MLP head. It is implemented as the `AttnHyper` class (with `AttnHyperLayer` message-passing layers) in `train_hypergraph_multi_batchsize.py`. Training uses `BCEWithLogitsLoss` with a response-only `pos_weight` (clipped at 8), AdamW with a cosine schedule (2% warmup), gradient clipping, and early stopping (patience 3) on validation AUPR.
 
 ```bash
 # multi-seed training (seeds 1-5), per-seed results appended to logger/
@@ -116,13 +116,14 @@ Per-seed metrics produced by `--mode train` are appended to `logger/llama2_<task
 ├── get_attention.py                     # step 1: extract attention maps from the local LLM
 ├── processed_hypergraph.py              # step 2: hypergraphs from all attention heads
 ├── process_hyper_layer.py               # step 2 (variant): hypergraphs from a single layer
-├── train_hypergraph_multi_batchsize.py  # step 3: HyperCHARM training / evaluation
+├── train_hypergraph_multi_batchsize.py  # step 3: AttnHyper training / evaluation
 ├── requirements.txt
 ├── paper_infor.md
 └── images/
     ├── framework.png                    # framework overview (rendered, shown in README)
     └── framework.pdf                    # framework overview (vector source)
 ```
+
 ## Citation
 
 If you find this work useful in your research, please consider citing:
