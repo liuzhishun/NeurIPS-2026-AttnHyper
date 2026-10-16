@@ -131,7 +131,7 @@ If you find this work useful in your research, please consider citing:
 @inproceedings{
 anonymous2026hypergraph,
 title={Hypergraph Modeling of Transformer Attention for Hallucination Detection},
-author={Anonymous},
+author={Mark Junjie Li, Zhishun Liu, Wei Wang, Yuanshan Lu, Jingxi Yang, Xianyu Bao, Jun Li, Sunjie Huang},
 booktitle={The Fortieth Annual Conference on Neural Information Processing Systems},
 year={2026},
 url={https://openreview.net/forum?id=DKOfhIFbgb}
