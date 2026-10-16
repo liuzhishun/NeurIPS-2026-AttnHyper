@@ -2,7 +2,7 @@
 
 Official implementation of [Hypergraph Modeling of Transformer Attention for Hallucination Detection](https://neurips.cc/virtual/2026/loc/sydney/poster/154475) (NeurIPS 2026).
 
-The framework represents token-level transformer attention as a hypergraph: each token is a node, and for every response token, the tokens it attends to (above a threshold `tau`) form a hyperedge across all attention heads. A message-passing model (**HyperCHARM**, referred to as **AttnHyper** in the paper) then predicts a per-token hallucination probability.
+The framework represents token-level transformer attention as a hypergraph: each token is a node, and for every response token, the tokens it attends to (above a threshold `tau`) form a hyperedge across all attention heads. A message-passing model (referred to as **AttnHyper** in the paper) then predicts a per-token hallucination probability.
 
 ![Framework overview](images/framework.png)
 
