@@ -119,10 +119,19 @@ Per-seed metrics produced by `--mode train` are appended to `logger/llama2_<task
 ├── train_hypergraph_multi_batchsize.py  # step 3: AttnHyper training / evaluation
 ├── requirements.txt
 ├── paper_infor.md
+├── LICENSE
 └── images/
     ├── framework.png                    # framework overview (rendered, shown in README)
     └── framework.pdf                    # framework overview (vector source)
 ```
+
+## Contributing
+
+This is research code accompanying the paper. Bug reports are welcome: please open an issue with a description of the problem, the command you ran, and (if possible) a minimal reproduction. Pull requests that fix bugs or improve documentation are also welcome. For questions about the method or experiments, please contact the authors.
+
+## License
+
+This project is released under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). The code and framework may be used, shared, and adapted for any purpose, including commercial use, provided appropriate attribution is given. See the full legal text in the [`LICENSE`](LICENSE) file.
 
 <!-- ## Citation
 
