@@ -91,22 +91,22 @@ Key arguments:
 
 ## Results
 
-AUROC (%) on RAGTruth. For AttnHyper (ours), mean ± standard deviation is computed across five random seeds. AttnHyper achieves the best result on all three tasks with both backbone models.
+AUROC (%) on RAGTruth. Best in **bold**, second-best <u>underlined</u>. For AttnHyper (ours), mean ± standard deviation is computed across five random seeds.
 
 | Model | Type | Method | QA | Summary | Data2txt |
 | --- | --- | --- | --- | --- | --- |
 | Mistral-7B | Logits | Perplexity | 59.14 | 64.66 | 33.91 |
-| Mistral-7B | Hidden | ICR | 60.96 | 55.66 | 53.33 |
-| Mistral-7B | Hidden | TSV | 79.43 | 66.07 | 68.86 |
-| Mistral-7B | Attention | LapEig | 76.31 | 68.39 | 66.65 |
-| Mistral-7B | Attention | Lookback | 91.35 | 77.75 | 89.96 |
-| Mistral-7B | Attention | **AttnHyper (ours)** | **96.18 ± 0.1** | **87.89 ± 0.8** | **94.04 ± 0.4** |
+| | Hidden | ICR | 60.96 | 55.66 | 53.33 |
+| | | TSV | 79.43 | 66.07 | 68.86 |
+| | Attention | LapEig | 76.31 | 68.39 | 66.65 |
+| | | Lookback | <u>91.35</u> | <u>77.75</u> | <u>89.96</u> |
+| | | **AttnHyper (ours)** | **96.18 ± 0.1** | **87.89 ± 0.8** | **94.04 ± 0.4** |
 | LLaMA-2-7B | Logits | Perplexity | 54.29 | 60.81 | 36.85 |
-| LLaMA-2-7B | Hidden | ICR | 58.86 | 53.86 | 60.18 |
-| LLaMA-2-7B | Hidden | TSV | 78.05 | 63.57 | 66.52 |
-| LLaMA-2-7B | Attention | LapEig | 79.63 | 63.34 | 65.44 |
-| LLaMA-2-7B | Attention | Lookback | 85.09 | 69.65 | 85.05 |
-| LLaMA-2-7B | Attention | **AttnHyper (ours)** | **90.18 ± 0.1** | **71.54 ± 0.4** | **89.51 ± 0.3** |
+| | Hidden | ICR | 58.86 | 53.86 | 60.18 |
+| | | TSV | 78.05 | 63.57 | 66.52 |
+| | Attention | LapEig | 79.63 | 63.34 | 65.44 |
+| | | Lookback | <u>85.09</u> | <u>69.65</u> | <u>85.05</u> |
+| | | **AttnHyper (ours)** | **90.18 ± 0.1** | **71.54 ± 0.4** | **89.51 ± 0.3** |
 
 Per-seed metrics produced by `--mode train` are appended to `logger/llama2_<task>_results.json` or `logger/Mistral_<task>_results.json`; ablation records go to `logger/ablation_results_<task>.json`.
 
@@ -124,7 +124,7 @@ Per-seed metrics produced by `--mode train` are appended to `logger/llama2_<task
     └── framework.pdf                    # framework overview (vector source)
 ```
 
-## Citation
+<!-- ## Citation
 
 If you find this work useful in your research, please consider citing:
 
@@ -137,5 +137,5 @@ booktitle={The Fortieth Annual Conference on Neural Information Processing Syste
 year={2026},
 url={https://openreview.net/forum?id=DKOfhIFbgb}
 }
-```
+``` -->
 
